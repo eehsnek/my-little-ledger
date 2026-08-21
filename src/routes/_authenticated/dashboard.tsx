@@ -134,7 +134,7 @@ function DashboardPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-semibold text-emerald-600 dark:text-emerald-400">
+              <p className="text-2xl font-semibold text-success">
                 {formatCurrency(totalLent)}
               </p>
             </CardContent>
@@ -147,7 +147,7 @@ function DashboardPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-semibold text-rose-600 dark:text-rose-400">
+              <p className="text-2xl font-semibold text-destructive">
                 {formatCurrency(totalBorrowed)}
               </p>
             </CardContent>
@@ -162,9 +162,7 @@ function DashboardPage() {
             <CardContent>
               <p
                 className={`text-2xl font-semibold ${
-                  balance >= 0
-                    ? "text-emerald-600 dark:text-emerald-400"
-                    : "text-rose-600 dark:text-rose-400"
+                  balance >= 0 ? "text-success" : "text-destructive"
                 }`}
               >
                 {formatCurrency(balance)}
@@ -267,7 +265,7 @@ function DashboardPage() {
                             {debt.type === "lent" ? "Lent" : "Borrowed"}
                           </Badge>
                           {debt.paid && (
-                            <Badge variant="outline" className="text-emerald-600">
+                          <Badge variant="outline" className="text-success">
                               Paid
                             </Badge>
                           )}
