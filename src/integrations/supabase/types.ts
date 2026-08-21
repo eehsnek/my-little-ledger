@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      debts: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string | null
+          id: string
+          paid: boolean
+          person_name: string
+          type: Database["public"]["Enums"]["debt_type"]
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          paid?: boolean
+          person_name: string
+          type: Database["public"]["Enums"]["debt_type"]
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          paid?: boolean
+          person_name?: string
+          type?: Database["public"]["Enums"]["debt_type"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +55,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      debt_type: "lent" | "borrowed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +182,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      debt_type: ["lent", "borrowed"],
+    },
   },
 } as const
